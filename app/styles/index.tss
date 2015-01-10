@@ -1,6 +1,3 @@
-".container": {
-    backgroundColor:"#fff"
-},
 "#label": {
     width: "100%",
     height: 40,
@@ -9,4 +6,19 @@
   left:0,
   textAlign:'center'
 
-} 
+}, 
+".container": {
+      backgroundColor:"white"
+},
+
+"#fbloginLabel": {
+    top:"40%",
+    left:"30%",
+    width:"60%",
+    height:"10%"
+}
+"#icon" :{
+    top:"40%",
+    left:"5%",
+    image: "facebook-icon.png"
+}
