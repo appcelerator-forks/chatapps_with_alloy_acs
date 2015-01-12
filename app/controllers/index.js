@@ -1,45 +1,28 @@
-var fb = require('facebook');
-fb.appid = Ti.App.Properties.getString('ti.facebook.appid');
-fb.permissions = ['publish_stream','email','user_birthday'];
-fb.forceDialogAuth = false;
-fb.addEventListener('login', function(e) {
-  if (e.success) {
-    fb.requestWithGraphPath('me',{},"GET",function(e) {
-        if (e.success) {
-          var obj = JSON.parse(e.result),
-              moment = require('alloy/moment'),
-              token, user, email, birthday;
+// グルーバル定義
+Alloy.Globals.Root = $;
+Alloy.Globals.TabGroup = $.tabGroup;
+Alloy.Globals.CurrentTab = null;
+Alloy.Globals.Tabs = {
+	login: $.login,
+	chat: $.chat
+};
 
-          email = obj.email;
-          birthday = moment(obj.birthday, "MM/DD/YYYY");
-          token = fb.accessToken;
-          Ti.API.info("Success: " +
-                      "email" + email +
-                      "birthday" + birthday +
-                      "token" + token
-                     );
-          user = Alloy.createModel('social');
-          user.fbLogin(token,email, birthday);
-        }
-      }
-    );
+Ti.API.info("Alloy.Globals.fb.loggedIn" + Alloy.Globals.fb.loggedIn);
+if(Alloy.Globals.fb.loggedIn === false) {
+  // var login = Alloy.createController('login'),
+  //     loginView = login.getView();
+  Ti.API.info("login start");
+  var loginController = Alloy.createController('login');
+} else {
+  $.tabGroup.open();
+}
 
-  } else if (e.error) {
-    Ti.API.info(e.error);
-  } else if (e.cancelled) {
-    Ti.API.info("Canceled");
-  }
+$.tabGroup.addEventListener('open',function(e){
+  Alloy.Globals.CurrentTab = e.source.activeTab;
+  Ti.API.info(Alloy.Globals.CurrentTab);
 });
 
-$.fbloginLabel.addEventListener('click', function(e) {
-  fb.authorize();
+$.tabGroup.addEventListener('focus',function(e){
+  Alloy.Globals.CurrentTab = e.tab;
+  Ti.API.info("FOCUS: " + Alloy.Globals.CurrentTab);
 });
-
-
-$.label.addEventListener('click', function(e) {
-  var newWindow;
-  newWindow = Alloy.createController('newWindow');
-  return newWindow.move($.tabTwo);
-});
-
-$.index.open();

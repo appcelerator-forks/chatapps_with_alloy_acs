@@ -1,0 +1,13 @@
+<Alloy>
+  <Window id="loginForm" fullscreen="false">
+    
+    <View id="loginView" layout="vertical">
+      <Label id="fbloginLabel">Facebookでログイン</Label>
+      <TextField id="inputUsername" />
+      <TextField id="inputPassword" passwordMask="true" />
+      <Button id="buttonLogin" /> 
+      <ActivityIndicator id="activityIndicator" />
+    </View>
+    
+  </Window>
+</Alloy>

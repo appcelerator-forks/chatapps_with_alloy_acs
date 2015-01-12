@@ -1,15 +1,6 @@
 <Alloy>
-	<TabGroup>
-		<Tab id="tabOne" title="Tab 1" icon="KS_nav_ui.png">
-      <Window class="container">
-        <Label id="fbloginLabel">Facebookでログイン</Label>
-        <ImageView id="icon"></ImageView>
-      </Window>
-		</Tab>
-		<Tab id="tabTwo" title="Tab 2" icon="KS_nav_views.png">
-			<Window title="Tab 1" id="mainWindow" class="container">
-				<Label id="label">Hello, World!!!!!!!</Label>
-			</Window>
-		</Tab>
+	<TabGroup id="tabGroup">
+		<Require id="tabOne" src="login/index" />
+		<Require id="tabTwo" src="chat/index" />
 	</TabGroup>
 </Alloy>
