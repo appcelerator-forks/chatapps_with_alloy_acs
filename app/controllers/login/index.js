@@ -4,10 +4,9 @@ Alloy.Globals.fb.forceDialogAuth = false;
 
 Alloy.Globals.fb.addEventListener('login', function(e) {
   if (e.success) {
-    Alloy.Globals.fb.requestWithGraphPath('me',{},"GET",function(e) {
-      var chat = Alloy.createController('chat'),
-          chatView = chat.getTopLevelViews();
 
+    Ti.App.Properties.setString('Cloud.sessionId', Alloy.Globals.fb.accessToken);
+    Alloy.Globals.fb.requestWithGraphPath('me',{},"GET",function(e) {
       if (e.success) {
         var obj = JSON.parse(e.result),
             moment = require('alloy/moment'),
@@ -25,9 +24,17 @@ Alloy.Globals.fb.addEventListener('login', function(e) {
         user.fbLogin(token,email, birthday);
       }
       Alloy.Globals.TabGroup.setActiveTab(1);
-      Alloy.Globals.TabGroup.open(chatView);
       
-
+      var chatRecords = Alloy.createCollection('chat');
+      var _chat = Alloy.createModel('chat');
+      _chat.show({
+        success:function(response){
+          Ti.API.info("chatRecords");
+          Ti.API.info(response);
+        },
+        error:function(response){
+        }
+      });
 
     });
 
