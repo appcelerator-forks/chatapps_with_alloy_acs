@@ -1,0 +1,14 @@
+<Alloy>
+  <Tab>
+    <Window id="login" platform="ios" class="container">
+      <View id="loginView" layout="vertical">
+        <Label id="fbloginLabel">Facebookでログイン</Label>
+        <TextField id="inputUsername" />
+        <TextField id="inputPassword" passwordMask="true" />
+        <Button id="buttonLogin" /> 
+        <ActivityIndicator id="activityIndicator" />
+      </View>
+      
+    </Window>
+  </Tab>
+</Alloy>

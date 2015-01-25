@@ -1,0 +1,10 @@
+<Alloy>
+  <Collection src="book"/>
+  <Window class="container" id="chat">
+    <ScrollableView dataCollection="book" onClose="cleanup">
+      <View layout="vertical">
+        <Label text="{title} by {artist}" />
+      </View>
+    </ScrollableView>	
+  </Window>
+</Alloy>

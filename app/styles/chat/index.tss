@@ -1,0 +1,15 @@
+".container": {
+    backgroundColor:"#fff",
+    tabBarHidden:false,
+    navBarHidden:true       
+
+},
+"#label": {
+    width: "100%",
+    height: 40,
+    color: "#000",
+  top:"50%",
+  left:0,
+  textAlign:'center'
+
+} 
