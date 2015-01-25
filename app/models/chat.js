@@ -15,7 +15,7 @@ exports.definition = {
 	extendModel: function(Model) {
     if (Ti.App.Properties.hasProperty('Cloud.sessionId')) {
       var that = this,
-          token = "CAAJB4SEpcRoBAPZALwfF4ORdwoZBVaJxLsNhvFaXl06LvtKRFhjWytLsofzDLie1vRHVSt3t6U5DM3xfdpxZCpliWyREbGdbhnyBMqQiBn0T6ZAUBTXtOt2t91YmF5xZCc44gOovmT23eM2fdPqU4YhmsFfGiHAZAeAxCgFiqbrGKUNlsZCBY5tewkZB6eQAyD5kzG1ywfFHa17fLUF0ZAhvgk539ZB3GOOydZCkZA7VVv8xwQZDZD";
+          token = "MYTOKEN";
 
       this.config.Cloud.SocialIntegrations.externalAccountLogin({
         type: 'facebook',
